@@ -5,7 +5,7 @@ import { Post } from "../../../shared/models";
 export type GetPostsResponseType = { items: Post[] };
 
 export default async function handler(
-    req,
+    _req: any,
     res: NextApiResponse<GetPostsResponseType>
 ) {
     const contentful = createClient({
@@ -17,7 +17,10 @@ export default async function handler(
 
     const posts = entries.items
         .filter((e) => e.sys.contentType.sys.id === "blogPost")
-        .map((e) => e.fields as Post);
+        .map((e) => e.fields as Post)
+        .sort(
+            (p1, p2) => +new Date(p1.publishedAt) - +new Date(p2.publishedAt)
+        );
 
     res.status(200).json({ items: posts });
 }
