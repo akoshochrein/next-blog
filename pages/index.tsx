@@ -1,7 +1,9 @@
 import Head from "next/head";
 import Layout from "../components/layout";
+import usePosts from "../shared/hooks/usePosts";
 
 export default function Home() {
+    const { posts, loading } = usePosts();
     return (
         <Layout>
             <Head>
@@ -13,7 +15,7 @@ export default function Home() {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            <main>content comes here</main>
+            <main>{!loading && posts.map((i) => i.title)}</main>
         </Layout>
     );
 }
