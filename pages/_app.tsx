@@ -1,17 +1,14 @@
 import createCache from "@emotion/cache";
 import { CacheProvider } from "@emotion/react";
-import { ThemeProvider, CssBaseline } from "@mui/material";
-import light from "../styles/theme/light";
+import { CssBaseline } from "@mui/material";
 
-const cache = createCache({ key: "blog" });
+const cache = createCache({ key: "blog", prepend: true });
 
 const App = ({ Component, pageProps }) => {
     return (
         <CacheProvider value={cache}>
-            <ThemeProvider theme={light}>
-                <CssBaseline />
-                <Component {...pageProps} />
-            </ThemeProvider>
+            <CssBaseline />
+            <Component {...pageProps} />
         </CacheProvider>
     );
 };
