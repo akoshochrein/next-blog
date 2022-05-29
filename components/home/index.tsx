@@ -67,14 +67,9 @@ const ArticleCard = ({ article: article }: { article: Article }) => {
                             alignItems="center"
                         >
                             <AuthorAvatar author={article.author} />
-                            <Box textAlign="end">
-                                <Typography variant="caption">
-                                    {format(
-                                        new Date(article.publishedAt),
-                                        "PPP"
-                                    )}
-                                </Typography>
-                            </Box>
+                            <Typography variant="caption" textAlign="end">
+                                {format(new Date(article.publishedAt), "PPP")}
+                            </Typography>
                         </Stack>
                     </Stack>
                 </CardContent>
