@@ -3,7 +3,7 @@ import {
     Box,
     Button,
     Container,
-    Toolbar,
+    Stack,
     Typography,
 } from "@mui/material";
 import styled from "@emotion/styled";
@@ -12,6 +12,7 @@ import Link from "next/link";
 
 const Wrapper = styled(AppBar)`
     background-color: white;
+    color: inherit;
 `;
 
 export const Header = () => {
@@ -19,31 +20,30 @@ export const Header = () => {
     return (
         <Wrapper position="static" elevation={0}>
             <Container>
-                <Toolbar disableGutters>
-                    <Image
-                        src="/images/logo-temp.svg"
-                        width={30}
-                        height={30}
-                        alt="Logo"
-                    />
-                    <Typography
-                        variant="h5"
-                        noWrap
-                        component={Link}
-                        href=""
-                        sx={{
-                            mr: 2,
-                            display: { xs: "flex", md: "none" },
-                            flexGrow: 1,
-                            fontFamily: "monospace",
-                            fontWeight: 700,
-                            letterSpacing: ".3rem",
-                            color: "inherit",
-                            textDecoration: "none",
-                        }}
-                    >
-                        LOGO
-                    </Typography>
+                <Stack direction="row" gap={4} alignItems="center">
+                    <Link passHref href="/" style={{ textDecoration: "none" }}>
+                        <Image
+                            src="/images/logo-temp.svg"
+                            width={30}
+                            height={30}
+                            alt="Logo"
+                            style={{ cursor: "pointer" }}
+                        />
+                    </Link>
+
+                    <Link passHref href="/" style={{ textDecoration: "none" }}>
+                        <Typography
+                            variant="h1"
+                            noWrap
+                            fontSize="24px"
+                            fontWeight="normal"
+                            sx={{
+                                cursor: "pointer",
+                            }}
+                        >
+                            Akos Hochrein&apos;s Space
+                        </Typography>
+                    </Link>
                     <Box
                         sx={{
                             flexGrow: 1,
@@ -63,7 +63,7 @@ export const Header = () => {
                             </Button>
                         ))}
                     </Box>
-                </Toolbar>
+                </Stack>
             </Container>
         </Wrapper>
     );
