@@ -18,7 +18,7 @@ export type Author = {
     avatar: Avatar;
 };
 
-export type Post = {
+export type Article = {
     title: string;
     slug: string;
     author: Author;
