@@ -6,7 +6,6 @@ import {
     Typography,
     Stack,
     ButtonBase,
-    CardActions,
     Avatar,
     Tooltip,
 } from "@mui/material";
