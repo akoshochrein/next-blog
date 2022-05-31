@@ -22,9 +22,9 @@ export const Header = () => {
                 >
                     <Link passHref href="/" style={{ textDecoration: "none" }}>
                         <Image
-                            src="/images/logo-temp.svg"
-                            width={30}
-                            height={30}
+                            src="/images/jojo-lojo-smallest.png"
+                            width={100}
+                            height={129}
                             alt="Logo"
                             style={{ cursor: "pointer" }}
                         />
