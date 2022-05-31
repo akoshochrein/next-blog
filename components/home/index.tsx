@@ -9,6 +9,7 @@ import {
     Avatar,
     Tooltip,
     Divider,
+    Skeleton,
 } from "@mui/material";
 import useArticles from "../../shared/hooks/useArticles";
 import { Article, Author } from "../../shared/models";
@@ -89,12 +90,25 @@ export const Home = () => {
                 columns={{ xs: 1, md: 3 }}
                 alignItems="stretch"
             >
-                {!loading &&
+                {loading ? (
+                    <>
+                        <Grid item xs={1} sm={1} md={1}>
+                            <Skeleton variant="rectangular" height="210px" />
+                        </Grid>
+                        <Grid item xs={1} sm={1} md={1}>
+                            <Skeleton variant="rectangular" height="210px" />
+                        </Grid>
+                        <Grid item xs={1} sm={1} md={1}>
+                            <Skeleton variant="rectangular" height="210px" />
+                        </Grid>
+                    </>
+                ) : (
                     articles.map((article) => (
-                        <Grid item xs={1} sm={1} md={1} key={article.title}>
+                        <Grid item xs={1} key={article.title}>
                             <ArticleCard article={article} />
                         </Grid>
-                    ))}
+                    ))
+                )}
             </Grid>
             <Stack direction="column" alignItems="center">
                 <Divider sx={{ width: "66%", marginY: 4 }} />
