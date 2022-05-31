@@ -1,26 +1,25 @@
-import {
-    AppBar,
-    Box,
-    Button,
-    Container,
-    Stack,
-    Typography,
-} from "@mui/material";
-import styled from "@emotion/styled";
+import { AppBar, Container, Stack, Typography } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
 
-const Wrapper = styled(AppBar)`
-    background-color: white;
-    color: inherit;
-`;
-
 export const Header = () => {
-    const pages = ["Products", "Pricing", "Blog"];
     return (
-        <Wrapper position="static" elevation={0}>
+        <AppBar
+            position="static"
+            elevation={0}
+            sx={{
+                backgroundColor: "white",
+                color: "inherit",
+                paddingY: 4,
+            }}
+        >
             <Container>
-                <Stack direction="row" gap={4} alignItems="center">
+                <Stack
+                    direction="row"
+                    gap={4}
+                    alignItems="center"
+                    alignContent="center"
+                >
                     <Link passHref href="/" style={{ textDecoration: "none" }}>
                         <Image
                             src="/images/logo-temp.svg"
@@ -44,27 +43,8 @@ export const Header = () => {
                             Akos Hochrein&apos;s Space
                         </Typography>
                     </Link>
-                    <Box
-                        sx={{
-                            flexGrow: 1,
-                            display: { xs: "none", md: "flex" },
-                        }}
-                    >
-                        {pages.map((page) => (
-                            <Button
-                                key={page}
-                                sx={{
-                                    my: 2,
-                                    color: "white",
-                                    display: "block",
-                                }}
-                            >
-                                {page}
-                            </Button>
-                        ))}
-                    </Box>
                 </Stack>
             </Container>
-        </Wrapper>
+        </AppBar>
     );
 };

@@ -23,7 +23,7 @@ const flattenContentfulResponse = (e: any) => {
     };
 };
 
-const sortByDateDescending = (p1, p2) =>
+const sortByDateDescending = (p1: any, p2: any) =>
     +new Date(p2.publishedAt) - +new Date(p1.publishedAt);
 
 export default async function handler(
