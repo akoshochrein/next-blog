@@ -8,6 +8,7 @@ import {
     ButtonBase,
     Avatar,
     Tooltip,
+    Divider,
 } from "@mui/material";
 import useArticles from "../../shared/hooks/useArticles";
 import { Article, Author } from "../../shared/models";
@@ -80,7 +81,7 @@ const ArticleCard = ({ article: article }: { article: Article }) => {
 export const Home = () => {
     const { articles, loading } = useArticles();
     return (
-        <main>
+        <Stack component="main" direction="column">
             <Typography variant="h2">Most recent articles</Typography>
             <Grid
                 container
@@ -95,6 +96,9 @@ export const Home = () => {
                         </Grid>
                     ))}
             </Grid>
-        </main>
+            <Stack component="row" alignItems="center">
+                <Divider sx={{ width: "66%", marginY: 4 }} />
+            </Stack>
+        </Stack>
     );
 };
