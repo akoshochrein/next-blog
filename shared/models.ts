@@ -25,4 +25,5 @@ export type Article = {
     publishedAt: string;
     summary: string;
     text: string;
+    bio: string;
 };

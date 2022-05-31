@@ -8,7 +8,6 @@ import {
     ButtonBase,
     Avatar,
     Tooltip,
-    Divider,
     Skeleton,
 } from "@mui/material";
 import useArticles from "../../shared/hooks/useArticles";
@@ -16,8 +15,9 @@ import { Article, Author } from "../../shared/models";
 import { format } from "date-fns";
 import { useRouter } from "next/router";
 import Image from "next/image";
+import { Divider } from "../shared/Divider";
 
-const AuthorAvatar = ({
+export const AuthorAvatar = ({
     author,
     size = 48,
 }: {
@@ -28,7 +28,7 @@ const AuthorAvatar = ({
         title={`Published by ${author.firstName} ${author.lastName}`}
         placement="bottom"
     >
-        <Avatar>
+        <Avatar sx={{ width: size, height: size }}>
             <Image
                 src={author.avatar.file.url}
                 width={size}
@@ -110,9 +110,7 @@ export const Home = () => {
                     ))
                 )}
             </Grid>
-            <Stack direction="column" alignItems="center">
-                <Divider sx={{ width: "66%", marginY: 4 }} />
-            </Stack>
+            <Divider />
         </Stack>
     );
 };
