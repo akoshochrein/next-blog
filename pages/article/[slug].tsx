@@ -1,13 +1,12 @@
-import { Stack, Typography } from "@mui/material";
+import { Stack } from "@mui/material";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { Layout } from "../../components";
-import { AuthorAvatar } from "../../components/home";
 import { Divider } from "../../components/shared/Divider";
 import useArticles from "../../shared/hooks/useArticles";
-import { Body } from "./Body";
-import { Footer } from "./Footer";
-import { Headline } from "./Headline";
+import { Body } from "../../components/article/Body";
+import { Footer } from "../../components/article/Footer";
+import { Headline } from "../../components/article/Headline";
 
 export default function ArticlePage() {
     const router = useRouter();
