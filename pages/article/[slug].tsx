@@ -38,14 +38,21 @@ export default function ArticlePage() {
                             <Typography variant="h1">
                                 {article.title}
                             </Typography>
-                            <Box>
+                            <Stack direction="column" alignItems="flex-end">
                                 <Typography variant="h4">
                                     {format(
                                         new Date(article.publishedAt),
                                         "PPP"
                                     )}
                                 </Typography>
-                            </Box>
+                                <Typography variant="body2">
+                                    Reading time: ~
+                                    {Math.round(
+                                        article.text.split(" ").length / 200
+                                    )}{" "}
+                                    minutes
+                                </Typography>
+                            </Stack>
                         </Stack>
                         <Box>
                             <ReactMarkdown
