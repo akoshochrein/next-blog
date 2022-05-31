@@ -96,7 +96,7 @@ export const Home = () => {
                         </Grid>
                     ))}
             </Grid>
-            <Stack component="row" alignItems="center">
+            <Stack direction="row" alignItems="center">
                 <Divider sx={{ width: "66%", marginY: 4 }} />
             </Stack>
         </Stack>
