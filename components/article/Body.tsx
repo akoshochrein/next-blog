@@ -23,9 +23,15 @@ export const Body = ({ article }) => (
                             {...props}
                         />
                     ) : (
-                        <code className={className} {...props}>
-                            {children}
-                        </code>
+                        <Box sx={{ overflow: "auto" }}>
+                            <code
+                                className={className}
+                                style={{ overflow: "scroll" }}
+                                {...props}
+                            >
+                                {children}
+                            </code>
+                        </Box>
                     );
                 },
             }}
