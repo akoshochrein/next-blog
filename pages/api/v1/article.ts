@@ -1,6 +1,5 @@
-import { createClient } from "contentful";
 import { NextApiRequest, NextApiResponse } from "next";
-import { Article, Avatar } from "../../../shared/models";
+import { Article } from "../../../shared/models";
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 
 export type GetArticleResponseType = { article: Article | null };

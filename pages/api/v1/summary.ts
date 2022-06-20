@@ -27,6 +27,9 @@ export default async function handler(
                             ... on Author {
                                 firstName
                                 lastName
+                                githubHandle
+                                twitterHandle
+                                linkedInHandle
                                 avatar {
                                     url
                                 }
