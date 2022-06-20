@@ -1,5 +1,5 @@
 import { Stack, Typography } from "@mui/material";
-import { AuthorAvatar } from "../home";
+import { AuthorAvatar } from "../home/authorAvatar";
 
 export const Footer = ({ article }) => (
     <Stack direction="row" gap={4} justifyContent="flex-end">

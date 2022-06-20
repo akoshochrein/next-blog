@@ -3,7 +3,7 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import { Layout } from "../../components";
 import { Divider } from "../../components/shared/Divider";
-import useArticles from "../../shared/hooks/useArticles";
+import useArticle from "../../shared/hooks/useArticles";
 import { Body } from "../../components/article/Body";
 import { Footer } from "../../components/article/Footer";
 import { Headline } from "../../components/article/Headline";
@@ -11,7 +11,7 @@ import { Headline } from "../../components/article/Headline";
 export default function ArticlePage() {
     const router = useRouter();
     const { slug } = router.query;
-    const { articles, loading } = useArticles({ slug: slug as string });
+    const { article, loading } = useArticle({ slug: slug as string });
     return (
         <Layout>
             <Head>
@@ -23,7 +23,7 @@ export default function ArticlePage() {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             {!loading &&
-                articles.map((article) => (
+                (article ? (
                     <Stack
                         key={article.slug}
                         component="article"
@@ -34,6 +34,10 @@ export default function ArticlePage() {
                         <Body article={article} />
                         <Footer article={article} />
                         <Divider />
+                    </Stack>
+                ) : (
+                    <Stack component="div" direction="column">
+                        Cound not find this article
                     </Stack>
                 ))}
         </Layout>

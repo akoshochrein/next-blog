@@ -1,13 +1,12 @@
-import { createClient } from "contentful";
-import { NextApiRequest, NextApiResponse } from "next";
-import { Article, Avatar } from "../../../shared/models";
+import { NextApiResponse } from "next";
+import { Summary } from "../../../shared/models";
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 
-export type GetArticleResponseType = { article: Article | null };
+export type GetSummariesResponseType = { items: Summary[] };
 
 export default async function handler(
-    req: NextApiRequest,
-    res: NextApiResponse<GetArticleResponseType>
+    _req: any,
+    res: NextApiResponse<GetSummariesResponseType>
 ) {
     const client = new ApolloClient({
         uri: `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}/environments/master`,
@@ -17,13 +16,10 @@ export default async function handler(
         },
     });
 
-    const articleResult = await client.query({
+    const summariesResult = await client.query({
         query: gql`
             query {
-                blogPostCollection(
-                    where: { slug: "${req.query.slug}" }
-                    limit: 1
-                ) {
+                blogPostCollection {
                     items {
                         title
                         slug
@@ -31,9 +27,6 @@ export default async function handler(
                             ... on Author {
                                 firstName
                                 lastName
-                                githubHandle
-                                twitterHandle
-                                linkedInHandle
                                 avatar {
                                     url
                                 }
@@ -41,18 +34,16 @@ export default async function handler(
                         }
                         publishedAt
                         summary
-                        text
+                        sys {
+                            id
+                        }
                     }
                 }
             }
         `,
     });
 
-    if (articleResult.data.blogPostCollection.items.length === 0) {
-        res.status(404).json({ article: null });
-    } else {
-        res.status(200).json({
-            article: articleResult.data.blogPostCollection.items[0],
-        });
-    }
+    res.status(200).json({
+        items: summariesResult.data.blogPostCollection.items,
+    });
 }

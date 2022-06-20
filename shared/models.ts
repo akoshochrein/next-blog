@@ -1,12 +1,5 @@
 export type Avatar = {
-    title: string;
-    description: string;
-    file: {
-        url: string;
-        details: { size: number; image: { width: number; height: number } };
-        fileName: "1627924561847.jpeg";
-        contentType: "image/jpeg";
-    };
+    url: string;
 };
 
 export type Author = {
@@ -16,6 +9,7 @@ export type Author = {
     linkedInHandle: string;
     githubHandle: string;
     avatar: Avatar;
+    bio: string;
 };
 
 export type Article = {
@@ -25,5 +19,15 @@ export type Article = {
     publishedAt: string;
     summary: string;
     text: string;
-    bio: string;
+};
+
+export type Summary = {
+    title: string;
+    slug: string;
+    author: Author;
+    publishedAt: string;
+    summary: string;
+    sys: {
+        id: string;
+    };
 };
