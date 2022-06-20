@@ -3,7 +3,7 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import { Layout } from "../../components";
 import { Divider } from "../../components/shared/Divider";
-import useArticle from "../../shared/hooks/useArticles";
+import useArticle from "../../shared/hooks/useArticle";
 import { Body } from "../../components/article/Body";
 import { Footer } from "../../components/article/Footer";
 import { Headline } from "../../components/article/Headline";
