@@ -4,7 +4,7 @@ import { Header } from "./Header";
 
 const Layout = ({ children }) => {
     return (
-        <Box component="div">
+        <Box component="div" paddingX={2}>
             <Header />
             <Container>{children}</Container>
             <Footer />
