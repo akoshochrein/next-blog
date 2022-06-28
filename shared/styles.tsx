@@ -1,5 +1,5 @@
 import "typeface-fira-sans";
-import { createTheme } from "@mui/material";
+import { createTheme, darkScrollbar } from "@mui/material";
 
 export const theme = createTheme({
     typography: {
@@ -22,6 +22,16 @@ export const theme = createTheme({
         body1: {
             fontSize: 18,
             marginBottom: 18,
+        },
+    },
+    components: {
+        MuiCssBaseline: {
+            styleOverrides: {
+                body: {
+                    overflowY: "scroll",
+                    ...darkScrollbar(),
+                },
+            },
         },
     },
 });

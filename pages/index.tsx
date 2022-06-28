@@ -7,7 +7,6 @@ import useArticleSummaries from "../shared/hooks/useArticleSummaries";
 
 export default function HomePage() {
     const { summaries: posts, loading } = useArticleSummaries();
-    console.log(posts);
     return (
         <Layout>
             <Head>
