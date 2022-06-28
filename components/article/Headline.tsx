@@ -23,7 +23,7 @@ export const Headline = ({ article }) => {
                 direction="column"
                 alignItems={isMobile ? "flex-start" : "flex-end"}
             >
-                <Typography variant="h4">
+                <Typography variant="h4" align="right">
                     {format(new Date(article.publishedAt), "PPP")}
                 </Typography>
                 <Typography variant="body2">
