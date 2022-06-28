@@ -1,4 +1,5 @@
 import { Box, Typography } from "@mui/material";
+import Image from "next/image";
 import ReactMarkdown from "react-markdown";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { materialOceanic } from "react-syntax-highlighter/dist/cjs/styles/prism";
@@ -29,6 +30,11 @@ export const Body = ({ article }) => (
             components={{
                 p: ({ children }) => <Paragraph>{children}</Paragraph>,
                 h2: ({ children }) => <Heading2>{children}</Heading2>,
+                img: ({ src, alt }) => (
+                    <Box marginY={4} component="div" sx={{ display: "block" }}>
+                        <Image width="2560" height="1600" src={src} alt={alt} />
+                    </Box>
+                ),
                 code({ node, inline, className, children, ...props }) {
                     const match = /language-(\w+)/.exec(className || "");
                     return !inline && match ? (
