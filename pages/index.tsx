@@ -6,7 +6,7 @@ import { Divider } from "../components/shared/Divider";
 import useArticleSummaries from "../shared/hooks/useArticleSummaries";
 
 export default function HomePage() {
-    const { summaries: posts, loading } = useArticleSummaries();
+    const { summaries: posts, loading } = useArticleSummaries({ take: 3 });
     return (
         <Layout>
             <Head>

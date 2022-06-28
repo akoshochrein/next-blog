@@ -1,11 +1,11 @@
-import { NextApiResponse } from "next";
+import { NextApiRequest, NextApiResponse } from "next";
 import { Summary } from "../../../shared/models";
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 
 export type GetSummariesResponseType = { items: Summary[] };
 
 export default async function handler(
-    _req: any,
+    req: NextApiRequest,
     res: NextApiResponse<GetSummariesResponseType>
 ) {
     const client = new ApolloClient({
@@ -16,10 +16,14 @@ export default async function handler(
         },
     });
 
+    const take = req.query.take;
+
     const summariesResult = await client.query({
         query: gql`
             query {
-                blogPostCollection {
+                blogPostCollection(order: publishedAt_DESC${
+                    take ? ` ,limit: ${take}` : ""
+                }) {
                     items {
                         title
                         slug
