@@ -3,24 +3,32 @@ import ReactMarkdown from "react-markdown";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { materialOceanic } from "react-syntax-highlighter/dist/cjs/styles/prism";
 
+const Paragraph = ({ children }) => (
+    <Typography
+        variant="body1"
+        component="span"
+        sx={{ "> div": { display: "inline" } }}
+    >
+        {children}
+    </Typography>
+);
+
+const Heading2 = ({ children }) => (
+    <Typography
+        variant="h2"
+        component="div"
+        sx={{ "> div": { display: "inline" } }}
+    >
+        {children}
+    </Typography>
+);
+
 export const Body = ({ article }) => (
     <Box>
         <ReactMarkdown
             components={{
-                p({ children }) {
-                    return (
-                        <Typography variant="body1" component="span">
-                            {children}
-                        </Typography>
-                    );
-                },
-                h2({ children }) {
-                    return (
-                        <Typography variant="h2" component="div">
-                            {children}
-                        </Typography>
-                    );
-                },
+                p: ({ children }) => <Paragraph>{children}</Paragraph>,
+                h2: ({ children }) => <Heading2>{children}</Heading2>,
                 code({ node, inline, className, children, ...props }) {
                     const match = /language-(\w+)/.exec(className || "");
                     return !inline && match ? (

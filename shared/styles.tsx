@@ -12,9 +12,6 @@ export const theme = createTheme({
             fontSize: 48,
             marginBottom: 24,
             marginTop: 24,
-            "> div": {
-                display: "inline",
-            },
         },
         h4: {
             fontSize: 30,
@@ -25,9 +22,6 @@ export const theme = createTheme({
         body1: {
             fontSize: 18,
             marginBottom: 18,
-            "> div": {
-                display: "inline",
-            },
         },
     },
 });
