@@ -8,7 +8,7 @@ const Paragraph = ({ children }) => (
     <Typography
         variant="body1"
         component="span"
-        sx={{ "> div": { display: "inline" } }}
+        sx={{ "> div": { display: "inline", background: "transparent" } }}
     >
         {children}
     </Typography>
@@ -24,6 +24,12 @@ const Heading2 = ({ children }) => (
     </Typography>
 );
 
+const ListItem = ({ children }) => (
+    <Box component="li" sx={{ "> div": { display: "inline" } }}>
+        {children}
+    </Box>
+);
+
 export const Body = ({ article }) => (
     <Box>
         <ReactMarkdown
@@ -35,6 +41,7 @@ export const Body = ({ article }) => (
                         <Image width="2560" height="1600" src={src} alt={alt} />
                     </Box>
                 ),
+                li: ({ children }) => <ListItem>{children}</ListItem>,
                 code({ node, inline, className, children, ...props }) {
                     const match = /language-(\w+)/.exec(className || "");
                     return !inline && match ? (
