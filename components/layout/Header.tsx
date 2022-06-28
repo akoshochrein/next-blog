@@ -10,7 +10,7 @@ export const Header = () => {
             sx={{
                 backgroundColor: "white",
                 color: "inherit",
-                paddingY: 4,
+                paddingY: 1,
             }}
         >
             <Container>

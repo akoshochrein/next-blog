@@ -11,6 +11,7 @@ export const theme = createTheme({
         h2: {
             fontSize: 48,
             marginBottom: 24,
+            marginTop: 24,
         },
         h4: {
             fontSize: 30,

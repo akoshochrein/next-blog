@@ -8,7 +8,18 @@ export const Body = ({ article }) => (
         <ReactMarkdown
             components={{
                 p({ children }) {
-                    return <Typography variant="body1">{children}</Typography>;
+                    return (
+                        <Typography variant="body1" component="span">
+                            {children}
+                        </Typography>
+                    );
+                },
+                h2({ children }) {
+                    return (
+                        <Typography variant="h2" component="div">
+                            {children}
+                        </Typography>
+                    );
                 },
                 code({ node, inline, className, children, ...props }) {
                     const match = /language-(\w+)/.exec(className || "");
