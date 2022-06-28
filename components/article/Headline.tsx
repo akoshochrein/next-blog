@@ -26,7 +26,7 @@ export const Headline = ({ article }) => {
                 <Typography variant="h4" align="right">
                     {format(new Date(article.publishedAt), "PPP")}
                 </Typography>
-                <Typography variant="body2">
+                <Typography variant="body2" align="right">
                     Reading time: ~
                     {Math.round(article.text.split(" ").length / 200)} minutes
                 </Typography>
