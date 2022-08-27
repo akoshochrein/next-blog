@@ -3,7 +3,7 @@ import { GetSummariesResponseType } from "../../pages/api/v1/summary";
 
 const useArticleSummaries = ({ take }: { take?: number }) => {
     const { data, error } = useSWR<GetSummariesResponseType>(
-        `/api/v1/summary?take=${take}`
+        `/api/v1/summary/${take ? `?take=${take}` : ""}`
     );
 
     const loading = !data && !error;

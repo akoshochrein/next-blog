@@ -13,6 +13,9 @@ export const theme = createTheme({
             marginBottom: 24,
             marginTop: 24,
         },
+        h3: {
+            fontSize: 36,
+        },
         h4: {
             fontSize: 30,
         },
@@ -32,6 +35,14 @@ export const theme = createTheme({
                     ...darkScrollbar(),
                 },
             },
+        },
+        MuiLink: {
+            styleOverrides: {
+                root: {
+                    fontSize: 18,
+                },
+            },
+            variants: [],
         },
     },
 });

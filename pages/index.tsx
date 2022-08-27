@@ -1,23 +1,21 @@
 import Head from "next/head";
 import Layout from "../components/layout";
-import { Grid, Typography, Stack, Skeleton } from "@mui/material";
+import {
+    Grid,
+    Typography,
+    Stack,
+    Skeleton,
+    Link as MUILink,
+} from "@mui/material";
 import { ArticleCard } from "../components/home/articleCard";
 import { Divider } from "../components/shared/Divider";
 import useArticleSummaries from "../shared/hooks/useArticleSummaries";
+import Link from "next/link";
 
 export default function HomePage() {
     const { summaries: posts, loading } = useArticleSummaries({ take: 3 });
     return (
         <Layout>
-            <Head>
-                <title>Akos Hochrein&apos;s Blog</title>
-                <meta
-                    name="description"
-                    content="Akos Hochrein's blog about coding, management, leadership and cooking"
-                />
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
-
             <Stack component="main" direction="column">
                 <Typography variant="h2">Most recent articles</Typography>
                 <Grid
@@ -25,6 +23,7 @@ export default function HomePage() {
                     spacing={{ xs: 2, md: 3 }}
                     columns={{ xs: 1, md: 3 }}
                     alignItems="stretch"
+                    marginBottom={3}
                 >
                     {loading ? (
                         <>
@@ -55,6 +54,13 @@ export default function HomePage() {
                         ))
                     )}
                 </Grid>
+                <Stack direction="row" justifyContent="center">
+                    <Link href="/archive" passHref>
+                        <MUILink underline="always">
+                            See articles from the past &#8594;
+                        </MUILink>
+                    </Link>
+                </Stack>
                 <Divider />
             </Stack>
         </Layout>

@@ -13,15 +13,7 @@ export default function ArticlePage() {
     const { slug } = router.query;
     const { article, loading } = useArticle({ slug: slug as string });
     return (
-        <Layout>
-            <Head>
-                <title>Akos Hochrein&apos;s Blog</title>
-                <meta
-                    name="description"
-                    content="Akos Hochrein's blog about coding, management, leadership and cooking"
-                />
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
+        <Layout titleSuffix={loading ? "" : ` | ${article.title}`}>
             {!loading &&
                 (article ? (
                     <Stack
