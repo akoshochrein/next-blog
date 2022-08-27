@@ -10,7 +10,7 @@ import { format } from "date-fns";
 import { useRouter } from "next/router";
 import { Summary } from "../../shared/models";
 
-import { AuthorAvatar } from "./authorAvatar";
+import { AuthorAvatar } from "../home/authorAvatar";
 
 export const ArticleCard = ({ article }: { article: Summary }) => {
     const router = useRouter();

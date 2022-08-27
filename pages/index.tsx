@@ -7,7 +7,7 @@ import {
     Skeleton,
     Link as MUILink,
 } from "@mui/material";
-import { ArticleCard } from "../components/home/articleCard";
+import { ArticleCard } from "../components/shared/articleCard";
 import { Divider } from "../components/shared/Divider";
 import useArticleSummaries from "../shared/hooks/useArticleSummaries";
 import Link from "next/link";

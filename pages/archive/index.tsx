@@ -9,11 +9,13 @@ import {
     Stack,
     Typography,
     Link as MuiLink,
+    Grid,
 } from "@mui/material";
+import { ArticleCard } from "../../components/shared/articleCard";
 
 const postsPerYear = (posts: Summary[]) =>
     posts.reduce((acc, post) => {
-        const formattedDate = format(new Date(post.publishedAt), "y MMM");
+        const formattedDate = format(new Date(post.publishedAt), "y");
         acc[formattedDate] = acc[formattedDate]
             ? [...acc[formattedDate], post]
             : [post];
@@ -30,32 +32,30 @@ export default function ArchivePage() {
 
                 {loading
                     ? "loading"
-                    : Object.entries(groupedPosts).map(
-                          ([date, posts]: [string, Summary[]]) => {
+                    : Object.entries(groupedPosts)
+                          .sort((p1, p2) => parseInt(p2[0]) - parseInt(p1[0]))
+                          .map(([date, posts]: [string, Summary[]]) => {
                               return (
                                   <>
-                                      <Typography variant="h3">
+                                      <Typography variant="h3" marginBottom={2}>
                                           {date}
                                       </Typography>
-                                      <List>
-                                          {" "}
+                                      <Grid
+                                          container
+                                          spacing={{ xs: 2, md: 3 }}
+                                          columns={{ xs: 1, md: 3 }}
+                                          alignItems="stretch"
+                                          marginBottom={3}
+                                      >
                                           {posts.map((p) => (
-                                              <ListItem key={p.slug}>
-                                                  <Link
-                                                      href={`/article/${p.slug}`}
-                                                      passHref
-                                                  >
-                                                      <MuiLink>
-                                                          {p.title}
-                                                      </MuiLink>
-                                                  </Link>
-                                              </ListItem>
+                                              <Grid item xs={1} key={p.slug}>
+                                                  <ArticleCard article={p} />
+                                              </Grid>
                                           ))}
-                                      </List>
+                                      </Grid>
                                   </>
                               );
-                          }
-                      )}
+                          })}
             </Stack>
         </Layout>
     );
