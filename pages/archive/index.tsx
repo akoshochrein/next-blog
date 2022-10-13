@@ -29,7 +29,6 @@ export default function ArchivePage() {
         <Layout titleSuffix=" | Archive">
             <Stack component="main" direction="column">
                 <Typography variant="h2">Articles from the past</Typography>
-
                 {loading
                     ? "loading"
                     : Object.entries(groupedPosts)
