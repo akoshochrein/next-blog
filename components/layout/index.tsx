@@ -7,7 +7,7 @@ const Layout = ({ children, titleSuffix = "" }) => {
     return (
         <Box component="div">
             <Head>
-                <title>Akos Hochrein&apos;s Blog{titleSuffix}</title>
+                <title>{`Akos Hochrein&apos;s Blog${titleSuffix}`}</title>
                 <meta
                     name="description"
                     content="Akos Hochrein's blog about coding, management, leadership and cooking"
